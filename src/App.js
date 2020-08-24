@@ -12,7 +12,7 @@ import UserDashboard from './components/user-dashboard/userDashboard';
 function App() {
   return (
     <div className="App">
-      <PrivateRoute path='/' component={UserDashboard}></PrivateRoute>
+      <PrivateRoute exact path='/' component={UserDashboard}></PrivateRoute>
       <Route path='/login' component={Login}></Route>
       <Route path='/register' component={register}></Route>
     </div>
