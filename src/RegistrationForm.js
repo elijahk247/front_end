@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Registration(props) {
-    const { values, submit, inputChange, submit, disabled, errors } = props;
+    const { values, submit, inputChange, disabled, errors } = props;
 
     const onSubmit = evt => {
         evt.preventDefault();
@@ -34,7 +34,7 @@ export default function Registration(props) {
                 <label>Username:&nbsp;
                     <input
                         value={values.username}
-                        onChange={oninputChange}
+                        onChange={onInputChange}
                         name='username'
                         type='text'
                     />
