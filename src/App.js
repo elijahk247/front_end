@@ -1,24 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+//Default values*******************************************************
+const initialFormValues = { 
+ 
+  //text inputs
+  name: '',
+  email: '',
+  password: '',
+ 
+  //dropdown
+  state: '',
+ 
+  //checkbox
+  terms: {
+  termaccept: false,
+   
+  },
+}
+const initialFormErrors = {
+  name: '',
+  email: '',
+  password: '',
+  state: '',
+}
+
+const initialUsers = []
+const initialDisabled = true
+
+//slices of State*******************************************************
+const [users, setUsers] = useState()
+const [formValues, setFormValues] = useState(initialFormValues)
+const [formErrors, setFormErrors] = useState(initialFormErrors)
+const [disabled, setDisabled] = useState(initialDisabled) 
+
+
+//Axios Request*******************************************************
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
