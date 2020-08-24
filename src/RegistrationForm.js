@@ -31,7 +31,7 @@ export default function Registration(props) {
                 <label>Password:&nbsp;
                     <input
                         value={values.password}
-                        inputChange={onInputChange}
+                        onChange={onInputChange}
                         name='password'
                         type='text'
                     />
