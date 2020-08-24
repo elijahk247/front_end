@@ -5,8 +5,9 @@ import './App.css';
 import axios from 'axios'
 import * as yup from 'yup'
 
-// importing the registration form
+// importing the registration form and schema
 import Registration from './RegistrationForm'
+import registrationSchema from './registrationSchema'
 
 //Default values*******************************************************
 const initialFormValues = { 
@@ -57,12 +58,37 @@ function App() {
 
   ///// FORM ACTIONS /////
   const inputChange = (name, value) => {
+    yup
+      .reach(registrationSchema, name)  // sending over argument into registrationSchema
+      .validate(value)  // checks if the value passed the requirements in registrationSchema
+      .then(valid => {
+        setFormErrors({
+          ...formErrors, 
+          [name]: '',
+        })
+      })  // if valid, clears the errors for the passed in arguments(the section that is being editted)
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0]
+        })
+      })  // value not valid; catches that and sends in the error message in registrationSchema
+
+    setFormValues({
+      ...formValues,
+      [name]: value
+    })
+
     return null;
   }
 
   const submit = () => {
     return null;
   }
+
+  useEffect(() => {
+
+  }, [formValues])
 
 
   //Axios Request*******************************************************
