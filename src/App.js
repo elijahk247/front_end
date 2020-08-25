@@ -14,6 +14,8 @@ import LoginForm from './Components/LoginForm'
 import { Route, Switch, Link } from 'react-router-dom'
 
 //import styled components
+//import strain list
+import Strains from './Components/Strains'
 
 
 
@@ -137,6 +139,7 @@ function App() {
 
 
   //Axios Requests*******************************************************
+  //Registration post request
   const postNewUser = newUser => {
 
     axios.post('https://marijuana-api.herokuapp.com/api/auth/register', newUser)
@@ -194,7 +197,9 @@ function App() {
     
     <Link to = "/register">Register</Link>
     <Link to = "/login"> Login</Link>
+    <Strains />
     </div>
+    
   );
 }
 
