@@ -38,10 +38,10 @@ const initialFormValues = {
   },
   */
 
-  // was told we only need to include username and password by our backend engineer
+  // was told we only need to include name and password by our backend engineer
 
   ///// TEXT INPUTS /////
-  username: '',
+  name: '',
   password: '',
 }
 const initialFormErrors = {
@@ -51,7 +51,7 @@ const initialFormErrors = {
   password: '',
   state: '',
   */
- username: '',
+ name: '',
  password: '',
 }
 

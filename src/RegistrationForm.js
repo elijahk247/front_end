@@ -14,17 +14,17 @@ export default function Registration(props) {
     }
 
     return (
-        <form className='form-container' onSubmit={onSubmit}>
+        <form className='form-container' onSubmit={submit}>
             <h2>Register a New User</h2>
             <div className='form-inputs'>
                 <h4>Please Fill in the Form Below:</h4>
 
                 {/* TEXT INPUTS */}
-                <label>Username:&nbsp;
+                <label>name:&nbsp;
                     <input
-                        value={values.username}
+                        value={values.name}
                         onChange={onInputChange}
-                        name='username'
+                        name='name'
                         type='text'
                     />
                 </label>
@@ -43,7 +43,7 @@ export default function Registration(props) {
                 <button disabled={disabled}>Submit</button>
 
                 <div className='errors'>
-                    <div>{errors.username}</div>
+                    <div>{errors.name}</div>
                     <div>{errors.password}</div>
                 </div>
             </div>

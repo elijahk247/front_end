@@ -20,11 +20,11 @@ export default function Login(props) {
                 <h4>Please Fill in the Form Below:</h4>
 
                 {/* TEXT INPUTS */}
-                <label>Username:&nbsp;
+                <label>name:&nbsp;
                     <input
-                        value={values.username}
+                        value={values.name}
                         onChange={onInputChange}
-                        name='username'
+                        name='name'
                         type='text'
                     />
                 </label>
@@ -43,7 +43,7 @@ export default function Login(props) {
                 <button disabled={disabled}>Submit</button>
 
                 <div className='errors'>
-                    <div>{errors.username}</div>
+                    <div>{errors.name}</div>
                     <div>{errors.password}</div>
                 </div>
             </div>

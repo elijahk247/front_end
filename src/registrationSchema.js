@@ -7,10 +7,10 @@ const registrationSchema = yup.object().shape({
     .string()
     .email('Must be a valid email address')
     .required('Must include email address'),*/
-  username: yup
+  name: yup
     .string()
-    .min(3, 'Username must be at least 3 characters long')
-    .required('Username is Required'),
+    .min(3, 'name must be at least 3 characters long')
+    .required('name is Required'),
   password: yup
     .string()
     .min(8, 'The length of the password should be at least 8 characters')
