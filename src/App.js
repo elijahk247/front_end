@@ -8,6 +8,15 @@ import * as yup from 'yup'
 // importing the registration form and schema
 import Registration from './RegistrationForm'
 import registrationSchema from './registrationSchema'
+import LoginForm from './Components/LoginForm'
+
+//import react router
+import { Route, Switch, Link } from 'react-router-dom'
+
+//import form components
+
+
+
 
 //Default values*******************************************************
 const initialFormValues = { 
@@ -92,12 +101,64 @@ function App() {
 
 
   //Axios Request*******************************************************
+  const postNewUser = newUser => {
+
+    axios.post('https://marijuana-api.herokuapp.com/api/auth/register', newUser)
+      .then(res => {
+        
+        setUsers([...users, res.data])
+        console.log(res.data)
+        
+      })
+      .catch(err => {
+        
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+      
+  }
+  
+  //login post request
+  
+  const postLoginUser = login => {
+  
+    axios.post('https://marijuana-api.herokuapp.com/api/auth/login', login)
+      .then(res => {
+        
+        setUsers([...users, res.data])
+        console.log(res.data)
+        
+      })
+      .catch(err => {
+        
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+      
+  }
+
   return (
-    <div className="App">
+    <div>
+    <Switch>
+      <Route path ='/register'>
       <Registration 
         values={formValues} inputChange={inputChange} submit={submit} disabled={disabled} errors={formErrors}
       />
-      
+      </Route>
+       
+
+      <Route path = '/login'>
+      <LoginForm 
+        values={formValues} inputChange={inputChange} submit={submit} disabled={disabled} errors={formErrors}
+      />
+      </Route>
+
+    </Switch>
+    
+    <Link to = "/register">Register</Link>
+    <Link to = "/login"> Login</Link>
     </div>
   );
 }
