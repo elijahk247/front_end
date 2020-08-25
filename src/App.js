@@ -13,7 +13,8 @@ import LoginForm from './Components/LoginForm'
 //import react router
 import { Route, Switch, Link } from 'react-router-dom'
 
-//import form components
+//import styled components
+
 
 
 
@@ -91,16 +92,51 @@ function App() {
     return null;
   }
 
-  const submit = () => {
-    return null;
+  //enable submit button
+  useEffect(() => {
+    registrationSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid);
+      })
+  }, [formValues])
+
+
+//login page submit button
+  const submitLogin = () => {
+      
+  const newLogin = {
+    name: formValues.name,
+    password: formValues.password,
+        
+  }
+  console.log (newLogin)
+    
+    postNewUser(newLogin)
+    
   }
 
   useEffect(() => {
 
   }, [formValues])
 
+  //registration page submit button
+  const submitRegistration = () => {
+      
+    const newRegistration = {
+      name: formValues.name,
+      password: formValues.password,
+          
+    }
+    console.log (newRegistration)
+      
+      postLoginUser(newRegistration)
+      
+    }
+  
 
-  //Axios Request*******************************************************
+
+
+  //Axios Requests*******************************************************
   const postNewUser = newUser => {
 
     axios.post('https://marijuana-api.herokuapp.com/api/auth/register', newUser)
@@ -144,14 +180,13 @@ function App() {
     <Switch>
       <Route path ='/register'>
       <Registration 
-        values={formValues} inputChange={inputChange} submit={submit} disabled={disabled} errors={formErrors}
+        values={formValues} inputChange={inputChange} disabled={disabled} errors={formErrors} submit = {submitRegistration}
       />
-      </Route>
-       
+      </Route>       
 
       <Route path = '/login'>
       <LoginForm 
-        values={formValues} inputChange={inputChange} submit={submit} disabled={disabled} errors={formErrors}
+        values={formValues} inputChange={inputChange} disabled={disabled} errors={formErrors} submitLogin = {submitLogin}
       />
       </Route>
 

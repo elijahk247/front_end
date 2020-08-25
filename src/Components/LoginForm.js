@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function Login(props) {
-    const { values, submit, inputChange, disabled, errors } = props;
+    const { values,  inputChange, disabled, errors, submitLogin } = props;
 
     const onSubmit = evt => {
         evt.preventDefault();
-        submit();
+        submitLogin();
     }
 
     const onInputChange = evt => {
@@ -14,7 +14,7 @@ export default function Login(props) {
     }
 
     return (
-        <form className='form-container' onSubmit={onSubmit}>
+        <form className='form-container' onSubmit={submitLogin}>
             <h2>Login</h2>
             <div className='form-inputs'>
                 <h4>Please Fill in the Form Below:</h4>
@@ -40,7 +40,7 @@ export default function Login(props) {
 
             <div className='form-submit'>
             {/* BUTTON IS DISABLED UNTIL CONDITIONS ARE MET */}
-                <button disbaled={disabled}>Submit</button>
+                <button disabled={disabled}>Submit</button>
 
                 <div className='errors'>
                     <div>{errors.username}</div>

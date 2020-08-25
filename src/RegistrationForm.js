@@ -40,7 +40,7 @@ export default function Registration(props) {
 
             <div className='form-submit'>
             {/* BUTTON IS DISABLED UNTIL CONDITIONS ARE MET */}
-                <button disbaled={disabled}>Submit</button>
+                <button disabled={disabled}>Submit</button>
 
                 <div className='errors'>
                     <div>{errors.username}</div>
