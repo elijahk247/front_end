@@ -59,14 +59,70 @@ const initialFormErrors = {
 
 const initialUsers = []
 const initialDisabled = true
-
+const initialStrains = [];
 
 function App() {
   //slices of State*******************************************************
   const [users, setUsers] = useState(initialUsers)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [disabled, setDisabled] = useState(initialDisabled) 
+  const [disabled, setDisabled] = useState(initialDisabled)
+  const [strains, setStrains] = useState(initialStrains); 
+
+
+
+  //Axios Requests*******************************************************
+  //Registration post request
+  const postNewUser = newUser => {
+
+    axios.post('https://marijuana-api.herokuapp.com/api/auth/register', newUser)
+      .then(res => {
+        
+        setUsers([...users, res.data])
+        console.log(res.data)
+        
+      })
+      .catch(err => {
+        
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+      
+  }
+  
+  //login post request
+  
+  const postLoginUser = login => {
+  
+    axios.post('https://marijuana-api.herokuapp.com/api/auth/login', login)
+      .then(res => {
+        
+        setUsers([...users, res.data])
+        console.log(res.data)
+        
+      })
+      .catch(err => {
+        
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+      
+  }
+
+
+  // get request for strains from an API
+  const getStrains = () => {
+    axios.get("https://marijuana-api.herokuapp.com/api/strains")
+      .then(res => {
+        console.log(res.data)
+        setStrains(res.data)
+      })
+      .catch(err => {
+        console.log("Error: ", err)
+      })
+  }
 
   ///// FORM ACTIONS /////
   const inputChange = (name, value) => {
@@ -114,12 +170,7 @@ function App() {
   console.log (newLogin)
     
     postNewUser(newLogin)
-    
-  }
-
-  useEffect(() => {
-
-  }, [formValues])
+}
 
   //registration page submit button
   const submitRegistration = () => {
@@ -131,53 +182,28 @@ function App() {
     }
     console.log (newRegistration)
       
-      postLoginUser(newRegistration)
+    postLoginUser(newRegistration)
       
-    }
   
-
-
-
-  //Axios Requests*******************************************************
-  //Registration post request
-  const postNewUser = newUser => {
-
-    axios.post('https://marijuana-api.herokuapp.com/api/auth/register', newUser)
-      .then(res => {
-        
-        setUsers([...users, res.data])
-        console.log(res.data)
-        
-      })
-      .catch(err => {
-        
-      })
-      .finally(() => {
-        setFormValues(initialFormValues)
-      })
-      
-  }
-  
-  //login post request
-  
-  const postLoginUser = login => {
-  
-    axios.post('https://marijuana-api.herokuapp.com/api/auth/login', login)
-      .then(res => {
-        
-        setUsers([...users, res.data])
-        console.log(res.data)
-        
-      })
-      .catch(err => {
-        
-      })
-      .finally(() => {
-        setFormValues(initialFormValues)
-      })
-      
+    // POST TO ADD UNIQUE ID
   }
 
+  ///// SIDE EFFECTS /////
+  useEffect(() => {
+    getStrains()
+    console.log(strains)
+  }, [])
+
+  useEffect(() => {
+    registrationSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid);
+      })
+
+  }, [formValues])    // checks whether all elements of form is valid for submitting; ables the button 
+
+
+  
   return (
     <div>
     <Switch>
@@ -197,10 +223,18 @@ function App() {
     
     <Link to = "/register">Register</Link>
     <Link to = "/login"> Login</Link>
-    <Strains /> 
+
+    {
+      strains.map(item => {
+        return( 
+          <Strains id={item.id} strainInfo={item}/> 
+        )
+      })
+      
+    }
     </div>
     
   );
 }
 
-export default App;
+export default App
