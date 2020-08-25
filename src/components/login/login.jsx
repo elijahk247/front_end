@@ -40,7 +40,7 @@ const Login = () => {
             <div className='text-field-containers'>
                 <TextField value={formValues.username} onChange={handleChange} color='secondary' type='text' label='Username' name='username' required></TextField>
                 <TextField value={formValues.password} onChange={handleChange} color='secondary' type='password' label='Password' name='password' required></TextField>
-                <Button type="submit" color='secondary' variant='contained'>Login</Button>
+                <Button type="submit" color='secondary' variant='outlined' id='submit-btn'>Login</Button>
             </div>
         </form>
     )

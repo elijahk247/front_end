@@ -1,5 +1,5 @@
 .form-container{
-    height: 85vh;
+    height: 75vh;
      display: flex;
     justify-content: center;
     align-items: center;
@@ -7,6 +7,14 @@
 
 .text-field-containers{
     display: grid;
-    grid-gap: 3rem;
+    grid-gap: 4rem;
     width: 25%;
+}
+
+#submit-btn{
+    border: 1px solid #ef001b;
+    color: #ef001b;
+    &:hover{
+        background-color: #ef001c4d;
+    }
 }

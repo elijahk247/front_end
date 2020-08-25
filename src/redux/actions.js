@@ -24,3 +24,17 @@ export const register = (formValues, history) => async (dispatch) => {
         dispatch({ type: "ERROR", payload: error })
     }
 }
+
+export const logOut = (history) => (dispatch) => {
+    localStorage.removeItem('token')
+    history.push('/login')
+    dispatch({ type: 'LOG_OUT' })
+}
+
+export const checkIfUserIsLoggedIn = () => dispatch => {
+    const token = localStorage.getItem('token')
+    if (token) {
+        dispatch({ type: 'LOGIN' })
+    }
+
+}

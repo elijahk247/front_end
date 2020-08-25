@@ -14,6 +14,11 @@ export const rootReducer = (state = INITIAL_STATE, action) => {
             }
         case 'ERROR':
             return state
+        case 'LOG_OUT':
+            return {
+                ...state,
+                isLoggedIn: false
+            }
         default:
             return state
     }

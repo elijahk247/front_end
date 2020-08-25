@@ -53,7 +53,7 @@ const Register = () => {
                     name="password"
                     required
                 />
-                <Button type="submit" color="secondary" variant="contained">
+                <Button type="submit" color="secondary" variant="outlined" id='submit-btn'>
                     Register
 				</Button>
             </div>
