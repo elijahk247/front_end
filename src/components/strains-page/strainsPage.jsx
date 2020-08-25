@@ -9,6 +9,7 @@ import './strainsPage.styles.scss'
 
 const StrainsPage = () => {
     const [strains, setStrains] = useState([])
+    
     return (
         <div className='strain-container'>
             {

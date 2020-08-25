@@ -10,6 +10,16 @@ const strainsData = [
         "imgURL": 'https://i1.wp.com/420.reviews/wp-content/uploads/2017/03/Zoom-Pie-Marijuana-Strain-Review-2.jpg?resize=400%2C400&ssl=1'
     },
     {
+        "id": 4,
+        "strain": "GrandDaddy Purple",
+        "type": "Indica",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        "effects": "Euphoric",
+        "rating": 4.7,
+        "flavor": "Earthy,Citrus",
+        "imgURL": 'https://media.growdiaries.com/static/post/photo/2918/233514_granddaddy-purplemsnlgrand-daddy-purp.jpg'
+    },
+    {
         "id": 2,
         "strain": "200 OG",
         "type": "Hybrid",
@@ -29,16 +39,7 @@ const strainsData = [
         "flavor": "Herbal,Pine",
         "imgURL": 'https://mmjonlinedispensary.com/wp-content/uploads/2017/08/OG-Kush-Feminized-Seeds.jpg'
     },
-    {
-        "id": 4,
-        "strain": "GrandDaddy Purple",
-        "type": "Indica",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-        "effects": "Euphoric",
-        "rating": 4.7,
-        "flavor": "Earthy,Citrus",
-        "imgURL": 'https://media.growdiaries.com/static/post/photo/2918/233514_granddaddy-purplemsnlgrand-daddy-purp.jpg'
-    },
+
     {
         "id": 5,
         "strain": "Electra",
