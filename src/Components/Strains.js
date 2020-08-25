@@ -2,55 +2,31 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect, useCallback } from 'react';
 
+// import strain to render each individual strain out of the list of strains pulled from the API
+import Strain from '../Components/Strain'
 
+  export default function Strains() {
+    const [strains, setStrains] = useState([]);  // sets the list of strains to an empty array
 
-
-const Strains = () => {
-    
-
-    const StrainsPage = () => {
-        const [strains, setStrains] = useState([])
-        return (
-            <div className='strain-container'>
-                {
-                    strains.map(el => {
-                        const { strain, id, description, imgURL } = el
-                        return <Strain key={id} description={description} imgURL={imgURL} strain={strain}></Strain>
-                    })
-                }
-            </div>
-        )
-    }
-    axios.get('https://marijuana-api.herokuapp.com/api/strains', strainList)
+    axios.get("https://marijuana-api.herokuapp.com/api/strains")
       .then(res => {
-        
-        setStrainList([...strainList, res.data])
-        
-        
+        setStrains(res)
       })
       .catch(err => {
-          debugger
-        
-      })
-      .finally(() => {
-        
+        console.log('Error: ', err)
       })
 
-      {
-          return(
-        strainList.map(strain => {
-                return (
-                  <pre key={strain.id}>
-                    <h4>
-                    {JSON.stringify(strainList) }
-                    
-                    </h4>
-                  </pre>
-                  
-                )
-        })
-      }
-      
+
+
+    return(
+      <div className='strains-container'>
+        {
+          strains.map(item => {
+            return(
+              <Strain key={item.id} strainInfo={item} />
+            )
+          })
+        }
+      </div>
+    )
   }
-
-  export default Strains;
