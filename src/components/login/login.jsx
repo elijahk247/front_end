@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
 import './login.styles.scss'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { login as loginUser } from '../../redux/actions'
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormValues({
@@ -17,8 +22,11 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault()
-        console.log('You have been logged in')
-        clearForm()
+        const user = {
+            username: formValues.username,
+            password: formValues.password
+        }
+        dispatch(loginUser(user, history))
     }
 
     const clearForm = () => {
@@ -37,5 +45,6 @@ const Login = () => {
         </form>
     )
 }
+
 
 export default Login
