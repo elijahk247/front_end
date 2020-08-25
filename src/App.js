@@ -83,12 +83,32 @@ function App() {
   }
 
   const submit = () => {
-    return null;
+    const newUser = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+    }
+
+    // POST TO ADD UNIQUE ID
   }
 
+  ///// SIDE EFFECTS /////
   useEffect(() => {
 
-  }, [formValues])
+  })
+
+
+
+
+
+
+
+  useEffect(() => {
+    registrationSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid);
+      })
+
+  }, [formValues])    // checks whether all elements of form is valid for submitting; ables the button 
 
 
   //Axios Request*******************************************************
