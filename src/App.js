@@ -17,6 +17,9 @@ import { Route, Switch, Link } from 'react-router-dom'
 //import strain list
 import Strains from './Components/Strains'
 
+//test
+import StrainsPage from './Components/Strainpagetest'
+
 
 
 
@@ -218,20 +221,26 @@ function App() {
         values={formValues} inputChange={inputChange} disabled={disabled} errors={formErrors} submitLogin = {submitLogin}
       />
       </Route>
+      
+      {/* test */}
+      <Route path = '/strains'>
+        <StrainsPage strains = {strains}/>
+      </Route>
 
     </Switch>
     
     <Link to = "/register">Register</Link>
     <Link to = "/login"> Login</Link>
+    <Link to = "/strains"> Strains</Link>
 
-    {
+    {/* {
       strains.map(item => {
         return( 
           <Strains id={item.id} strainInfo={item}/> 
         )
       })
       
-    }
+    } */}
     </div>
     
   );
