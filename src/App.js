@@ -14,13 +14,30 @@ import LoginForm from './Components/LoginForm'
 import { Route, Switch, Link } from 'react-router-dom'
 
 //import styled components
+import styled from 'styled-components'
+
 //import strain list
 import Strains from './Components/Strains'
 
 //test
 import StrainsPage from './Components/Strainpagetest'
 
+const StyledApp = styled.div`
+  background-color: #53762B;
+  text-align: center;
 
+  LoginForm {
+    h2 {
+      color: white;
+    }
+  }
+
+`
+
+const StyledNav = styled.div `
+  text-decoration: none;
+  color: black;
+`
 
 
 
@@ -208,7 +225,7 @@ function App() {
 
   
   return (
-    <div>
+    <StyledApp>
     <Switch>
       <Route path ='/register'>
       <Registration 
@@ -229,9 +246,11 @@ function App() {
 
     </Switch>
     
+    <StyledNav>
     <Link to = "/register">Register</Link>
     <Link to = "/login"> Login</Link>
     <Link to = "/strains"> Strains</Link>
+    </StyledNav>
 
     {/* {
       strains.map(item => {
@@ -241,7 +260,7 @@ function App() {
       })
       
     } */}
-    </div>
+    </StyledApp>
     
   );
 }

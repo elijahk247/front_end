@@ -1,4 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const StyledLogin = styled.div `
+    h2{
+        color: white;
+    }
+`
+
+const StyledInputs = styled.div `
+    display: flex;
+    flex-direction: column;
+`
 
 export default function Login(props) {
     const { values,  inputChange, disabled, errors, submitLogin } = props;
@@ -14,9 +26,10 @@ export default function Login(props) {
     }
 
     return (
+        <StyledLogin>
         <form className='form-container' onSubmit={submitLogin}>
             <h2>Login</h2>
-            <div className='form-inputs'>
+            <StyledInputs className='form-inputs'>
                 <h4>Please Fill in the Form Below:</h4>
 
                 {/* TEXT INPUTS */}
@@ -36,7 +49,7 @@ export default function Login(props) {
                         type='text'
                     />
                 </label>
-            </div>
+            </StyledInputs>
 
             <div className='form-submit'>
             {/* BUTTON IS DISABLED UNTIL CONDITIONS ARE MET */}
@@ -48,6 +61,7 @@ export default function Login(props) {
                 </div>
             </div>
         </form>
+        </StyledLogin>
     )
 }
 

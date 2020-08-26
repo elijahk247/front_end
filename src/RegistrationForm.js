@@ -1,4 +1,24 @@
 import React from 'react'
+// to style the webpage
+import styled from 'styled-components'
+
+const StyledRegistration = styled.div `
+    
+    h2 {
+        border: 1px solid grey;
+        
+
+        color: white;
+    }
+`
+
+const StyledInputs = styled.div `
+    display: flex;
+    flex-direction: column;
+    /* text-align: left; */
+
+    /* margin: auto; */
+`
 
 export default function Registration(props) {
     const { values, submit, inputChange, disabled, errors } = props;
@@ -14,9 +34,10 @@ export default function Registration(props) {
     }
 
     return (
+        <StyledRegistration>
         <form className='form-container' onSubmit={submit}>
             <h2>Register a New User</h2>
-            <div className='form-inputs'>
+            <StyledInputs>
                 <h4>Please Fill in the Form Below:</h4>
 
                 {/* TEXT INPUTS */}
@@ -36,7 +57,7 @@ export default function Registration(props) {
                         type='text'
                     />
                 </label>
-            </div>
+            </StyledInputs>
 
             <div className='form-submit'>
             {/* BUTTON IS DISABLED UNTIL CONDITIONS ARE MET */}
@@ -48,5 +69,6 @@ export default function Registration(props) {
                 </div>
             </div>
         </form>
+        </StyledRegistration>
     )
 }
