@@ -44,7 +44,6 @@ export const checkIfUserIsLoggedIn = () => dispatch => {
 }
 
 export const getAilments = () => async dispatch => {
-    console.log('from get ailments')
     try {
         let res = await axiosWithAuth().get('/api/v1/users/me/ailments')
         let ailments = res.data.payload.ailments
