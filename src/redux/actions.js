@@ -23,7 +23,7 @@ export const register = (formValues, history) => async (dispatch) => {
         const token = res.data.token
         localStorage.setItem('token', token)
         dispatch({ type: 'REGISTER' })
-        history.push('/')
+        history.push('/add-ailment')
     } catch (error) {
         dispatch({ type: "ERROR", payload: error })
     }

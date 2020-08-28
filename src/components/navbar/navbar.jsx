@@ -26,7 +26,7 @@ const Navbar = () => {
 						<div id="nav-links">
 							<Button color="inherit" position="end">
 								<Link className="nav-link" to="/add-ailment">
-									ailments
+									new ailment
 								</Link>
 							</Button>
 							<Button color="inherit" >

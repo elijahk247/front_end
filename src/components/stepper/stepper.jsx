@@ -6,15 +6,23 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddAilmentForm from '../add-ailment/addAilmentForm'
+import green from '@material-ui/core/colors/green';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
     },
+    color: {
+ 
+    },
     button: {
         marginRight: theme.spacing(1),
+  
     },
     instructions: {
+        backgroundColor: green[200],
+
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
     },
@@ -135,9 +143,9 @@ export default function FormStepper({ activeStep, setActiveStep, handleSubmit })
 
                                 <Button
                                     variant="contained"
-                                    color="primary"
                                     onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext}
                                     className={classes.button}
+                                    color='secondary'
                                 >
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                 </Button>

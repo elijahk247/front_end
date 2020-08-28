@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
     token = `Bearer ${token}`
 
     return axios.create({
-        baseURL: 'http://localhost:1337',
+        baseURL: 'https://medcab-api.herokuapp.com/',
         headers: {
             authorization: token
         }

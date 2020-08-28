@@ -7,6 +7,8 @@ import { useHistory } from 'react-router-dom'
 import Stepper from '../stepper/stepper'
 import './addAilment.styles.scss'
 
+import { green } from '@material-ui/core/colors/';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
+        color: green[200],
         '& > *': {
             margin: theme.spacing(0.8),
         },
@@ -31,12 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const INITIAL_VALUES = {
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque exercitationem corporis vel iste porro quo aut rem mollitia reprehenderit. Deleniti molestias, sequi expedita aperiam accusantium quod necessitatibus ducimus modi ab",
-    flavors: 'blueberry cherry apple',
-    effects: 'sleepy'
-}
+const INITIAL_VALUES = {}
 
 const AddAilmentForm = () => {
 
@@ -44,7 +42,7 @@ const AddAilmentForm = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
-    const [activeStep, setActiveStep] = useState(2);
+    const [activeStep, setActiveStep] = useState(0);
 
     const [formValues, handleChange] = useForm(INITIAL_VALUES)
 

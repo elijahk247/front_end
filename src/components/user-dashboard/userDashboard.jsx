@@ -5,6 +5,11 @@ import { getAilments } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import Ailment from '../ailment/ailment'
 import './userDashboard.styles.scss'
+import { Redirect } from 'react-router-dom'
+import { Button } from '@material-ui/core'
+import { Modal } from '@material-ui/core'
+
+
 
 const UserDashboard = () => {
     const dispatch = useDispatch()
