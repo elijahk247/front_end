@@ -62,6 +62,7 @@ const UpdateAilment = () => {
                     name='description'
                     multiline
                     rows={5}></TextField>
+      
                 <Button type="submit" color='secondary' variant='outlined' id='submit-btn'>Get recommendation</Button>
             </div>
         </form>

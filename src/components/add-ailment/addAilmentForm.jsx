@@ -22,8 +22,10 @@ const AddAilmentForm = () => {
         e.preventDefault()
         let ailment = {
             name: formValues.name,
-            description: formValues.description
+            description: formValues.description,
+            input_phrase: formValues.input_phrase
         }
+        console.log(ailment)
         dispatch(postAilment(ailment, history))
     }
 
@@ -37,7 +39,8 @@ const AddAilmentForm = () => {
                     type='text'
                     label='name'
                     name='name'
-                    required></TextField>
+                    required>
+                </TextField>
                 <TextField
                     value={formValues.description}
                     onChange={handleChange}
@@ -45,7 +48,16 @@ const AddAilmentForm = () => {
                     label='description'
                     name='description'
                     multiline
-                    rows={5}></TextField>
+                    rows={5}>
+                </TextField>
+                <TextField
+                    value={formValues.input_phrase}
+                    onChange={handleChange}
+                    color='secondary'
+                    label='properties'
+                    name='input_phrase'
+                >
+                </TextField>
                 <Button type="submit" color='secondary' variant='outlined' id='submit-btn'>Get recommendation</Button>
             </div>
         </form>

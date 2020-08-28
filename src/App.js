@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux'
 import StrainsPage from './components/strains-page/strainsPage'
 import AddAilmentForm from './components/add-ailment/addAilmentForm'
 import UpdateAilment from './components/update-ailment/updateAilment';
+import axiosWithAuth from './utils/auth/axiosWithAuth'
+
 
 function App() {
   // Check if user is logged in
@@ -18,6 +20,9 @@ function App() {
   useEffect(() => {
     dispatch(checkIfUserIsLoggedIn())
   }, [])
+
+
+
   return (
     <div className="App">
       <Route path='/' component={Navbar}></Route>

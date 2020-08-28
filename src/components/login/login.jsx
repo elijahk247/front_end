@@ -27,7 +27,6 @@ const Login = () => {
             email: formValues.email,
             password: formValues.password
         }
-        console.log(user)
         dispatch(loginUser(user, history))
     }
 
