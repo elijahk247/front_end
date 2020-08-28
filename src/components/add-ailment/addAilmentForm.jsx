@@ -1,11 +1,35 @@
 import React, { useState } from 'react'
 import useForm from '../../utils/hooks/useForm'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, Input } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { postAilment } from '../../redux/actions'
 import { useHistory } from 'react-router-dom'
 import Stepper from '../stepper/stepper'
 import './addAilment.styles.scss'
+
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
+import DoneIcon from '@material-ui/icons/Done';
+
+import { flavors } from '../../utils/data/flavorsData'
+import { effects } from '../../utils/data/effectsData'
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        '& > *': {
+            margin: theme.spacing(0.8),
+        },
+    },
+}));
+
+
+
 
 const INITIAL_VALUES = {
     name: "some name",
@@ -16,16 +40,46 @@ const INITIAL_VALUES = {
 
 const AddAilmentForm = () => {
 
+    const [chipValues, setChipValues] = useState([])
+    const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
-    const [activeStep, setActiveStep] = useState(0);
+    const [activeStep, setActiveStep] = useState(2);
 
     const [formValues, handleChange] = useForm(INITIAL_VALUES)
+
+    const handleClick = (e) => {
+        let target = e.currentTarget.innerText
+
+
+        // check if chip already exists and remove it
+
+        if (chipValues.includes(target)) {
+            let workbench = [...chipValues]
+            workbench.forEach((chip, idx) => {
+                if (chip == target) {
+                    console.log('found a match')
+                    workbench.splice(idx, 1)
+                }
+            })
+            setChipValues(workbench)
+            return
+        }
+
+        setChipValues([
+            ...chipValues,
+            target
+        ])
+    }
+
+    const handleDelete = () => {
+        console.log('deleted')
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const input_phrase = formValues.effects.concat(' ', formValues.flavors).trim()
+        let input_phrase = chipValues.join(' ').trim()
 
         let ailment = {
             name: formValues.name,
@@ -38,9 +92,6 @@ const AddAilmentForm = () => {
 
     return (
         <form className='add-form'>
-
-
-
             <div className='test-container'>
 
                 {
@@ -69,30 +120,30 @@ const AddAilmentForm = () => {
 
                 {
                     activeStep == 1 &&
-                    <div className="text-field-containers">
-                        <TextField
-                            value={formValues.flavors}
-                            onChange={handleChange}
-                            color='secondary'
-                            label='flavors'
-                            name='flavors'
-                        >
-                        </TextField>
+                    <div>
+                        {
+                            flavors.map(flavor => {
+                                return <Chip style={{ margin: '4px' }} className={chipValues.includes(flavor) ? 'isClicked' : ''} onClick={handleClick} name={flavor} type='checkbox' label={flavor} clickable ></Chip>
+                            })
+                        }
                     </div>
+
+
                 }
 
                 {
                     activeStep == 2 &&
-                    <div className="text-field-containers">
-                        <TextField
-                            value={formValues.effects}
-                            onChange={handleChange}
-                            color='secondary'
-                            label='effects'
-                            name='effects'
-                        >
-                        </TextField>
+                    <div className={classes.root} >
+                        {
+                            effects.map(effect => {
+
+                                return (
+                                    <Chip className={chipValues.includes(effect) ? 'isClicked' : ''} onClick={handleClick} name={effect} type='checkbox' label={effect} clickable ></Chip>
+                                )
+                            })
+                        }
                     </div>
+
                 }
 
                 {

@@ -18,7 +18,6 @@ const UserDashboard = () => {
         <div className='ailments-container'>
             {
                 ailments.map(ailment => {
-                    console.log(ailment.recommendation)
                     const { _id: id } = ailment
                     const { Name, Description } = ailment.recommendation
                     return <Ailment name={Name} description={Description} id={id}></Ailment>
