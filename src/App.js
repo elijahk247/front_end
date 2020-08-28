@@ -9,10 +9,10 @@ import Navbar from './components/navbar/navbar'
 import { checkIfUserIsLoggedIn } from './redux/actions'
 import { useDispatch } from 'react-redux'
 import StrainsPage from './components/strains-page/strainsPage'
-
+import AddAilmentForm from './components/add-ailment/addAilmentForm'
+import UpdateAilment from './components/update-ailment/updateAilment';
 
 function App() {
-
   // Check if user is logged in
   const dispatch = useDispatch()
   useEffect(() => {
@@ -22,6 +22,8 @@ function App() {
     <div className="App">
       <Route path='/' component={Navbar}></Route>
       <PrivateRoute exact path='/' component={UserDashboard}></PrivateRoute>
+      <PrivateRoute exact path='/add-ailment' component={AddAilmentForm}></PrivateRoute>
+      <PrivateRoute exact path='/update-ailment/:id' component={UpdateAilment}></PrivateRoute>
 
       <Route path='/strains' component={StrainsPage}></Route>
 

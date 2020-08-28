@@ -25,7 +25,7 @@ const Navbar = () => {
 					isLoggedIn ?
 						<div id="nav-links">
 							<Button color="inherit" position="end">
-								<Link className="nav-link" to="/add-property">
+								<Link className="nav-link" to="/add-ailment">
 									ailments
 								</Link>
 							</Button>

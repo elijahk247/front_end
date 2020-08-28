@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import axiosWithAuth from '../../utils/auth/axiosWithAuth'
-// import jwt_decode from 'jwt-decode'
-import JwtDecode from 'jwt-decode'
-
-let token = localStorage.getItem('token')
-if(token){
-    const decode = JwtDecode(token)
-}
-
-
+import axios from 'axios'
+import { getAilments } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import Ailment from '../ailment/ailment'
+import './userDashboard.styles.scss'
 
 const UserDashboard = () => {
-    // useEffect(async () => {
-    //     try {
-    //         let res = await axiosWithAuth().get('/api/ailments')
-    //     } catch (error) {
+    const dispatch = useDispatch()
+    const ailments = useSelector(state => state.ailments)
 
-    //     }
+    useEffect(() => {
+        dispatch(getAilments())
+    }, [])
 
-    // }, [])
     return (
-        <h1>Dashboard</h1>
+        <div className='ailments-container'>
+            {
+                ailments.map(ailment => {
+                    console.log(ailment.recommendation)
+                    const { _id: id } = ailment
+                    const { Name, Description } = ailment.recommendation
+                    return <Ailment name={Name} description={Description} id={id}></Ailment>
+                })
+            }
+        </div>
     )
 }
 export default UserDashboard

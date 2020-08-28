@@ -8,13 +8,13 @@
 .text-field-containers{
     display: grid;
     grid-gap: 4rem;
-    width: 25%;
+    width: 30%;
 }
 
 #submit-btn{
-    border: 1px solid #ef001b;
-    color: #ef001b;
+    border: 1px solid #1fad37;
+    color: #1fad37;
     &:hover{
-        background-color: #ef001c4d;
+        background-color: #1fad3721;
     }
 }

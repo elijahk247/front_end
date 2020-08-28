@@ -1,9 +1,12 @@
 import axios from 'axios'
 
 const axiosWithAuth = () => {
-    const token = localStorage.getItem('token')
+    let token = localStorage.getItem('token')
+
+    token =  `Bearer ${token}`
+
     return axios.create({
-        baseURL: 'https://marijuana-api.herokuapp.com',
+        baseURL: 'http://localhost:3000',
         headers: {
             authorization: token
         }
