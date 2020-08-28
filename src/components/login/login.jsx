@@ -14,11 +14,10 @@ const Login = () => {
             ...formValues,
             [name]: value
         })
-        console.log(formValues)
     }
     const [formValues, setFormValues] = useState({
-        email: 'greatpup1960@gmail.com',
-        password: 'isaiah123'
+        email: '',
+        password: ''
     })
 
     const login = (e) => {

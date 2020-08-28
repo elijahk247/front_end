@@ -10,10 +10,10 @@ const Register = () => {
     const history = useHistory()
 
     const [formValues, setFormValues] = useState({
-        name: 'random',
-        email: "random@gmail.com",
-        password: 'password',
-        confirmPassword: 'password'
+        name: '',
+        email: "",
+        password: '',
+        confirmPassword: ''
     });
 
     const handleChange = (e) => {
